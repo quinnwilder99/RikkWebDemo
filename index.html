@@ -1,313 +1,202 @@
-f<html dir="ltr" lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    
-    <title>My Resume Website</title>
+    <title>Rick Dinh — Resume</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="css/reset.css"/> 
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css"/>
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,300,800,700,400italic|PT+Serif:400,400italic"/>
-    <!--[if IEMobile]> 
-    <link rel="stylesheet" type="text/css" href="css/iemobile.css"/>
-    <![endif]--> 
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,800,700,400italic|PT+Serif:400,400italic"/>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.easytabs.min.js"></script>
     <script type="text/javascript" src="js/respond.min.js"></script>
     <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
     <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="js/jquery-ui-map.js"></script>
     <script type="text/javascript" src="js/jquery.carousel.js"></script>
     <script type="text/javascript" src="js/plugins.js"></script>
     <script type="text/javascript" src="js/custom.js"></script>
     <style>
-        img {
-            border-radius: 50%;
-        }
+        img { border-radius: 50%; }
+        .pill { display:inline-block; padding:.25rem .5rem; border:1px solid #ddd; border-radius:999px; font-size:.8rem; margin:.15rem .25rem; }
+        .stack { margin:.25rem 0 .75rem; }
+        .muted { color:#777; }
     </style>
-
-    <!--[if lt IE 9]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    
 </head>
-    <body>
-        <!-- Container -->
-        <section id="container">
-        
-            <!-- Header -->
-			<header>   
+<body>
+    <section id="container">
+        <header>
+            <div id="logo">
+                <h2>Rick Dinh</h2>
+                <h4>(aka Nhat Minh Dinh) • Software Developer</h4>
+            </div>
+            <ul class="socialicons">
+                <li><a href="mailto:nmdinh0132@gmail.com" class="transition">&#x31;</a></li>
+            </ul>
+        </header>
 
-                <!-- Logo -->
-                <div id="logo">
-                    <h2>Rick Dinh</h2>
-                    <!-- <h4>Student, CSULB</h4> -->
+        <section id="content">
+            <!-- Profile -->
+            <div id="profile">
+                <div class="about">
+                    <div><img src="images/photo.jpg" alt="Rick Dinh" height="186" width="186"/></div>
+                    <h1>Rick Dinh</h1>
+                    <h3>Learner</h3>
+                    <h4>About me</h4>
+                    <p>
+                        Motivated Computer Science major with hands-on experience in full‑stack development, cloud technologies, and Agile workflows.
+                        Seeking a developer role to apply technical knowledge, collaborate with experienced teams, and build impactful solutions.
+                    </p>
                 </div>
-                <!-- /Logo -->
 
-                <!-- Social Icons -->
-                <ul class="socialicons">
-                	<li><a href="#" class="transition">&#x2a;</a></li>
-                    <li><a href="#" class="transition">&#x2c;</a></li>
-                    <li><a href="#" class="transition">&#x2d;</a></li>
-                    <li><a href="#" class="transition">&#x31;</a></li>
+                <ul class="personal-info">
+                    <li><label>Location</label><span>Orange County, CA</span></li>
+                    <li><label>Email</label><span class="word-wrap">nmdinh0132@gmail.com</span></li>
+                    <li><label>Phone</label><span>(951) 609-7351</span></li>
+                    <li><label>Legal name</label><span>Nhat Minh Dinh</span></li>
                 </ul>
-                <!-- /Social Icons -->
-            </header>
-            <!-- /Header -->
-            
-            <!-- Content -->
-            <section id="content" >
-            
-                <!-- Profile -->
-                <div id="profile"> 
-                 	<!-- About section -->
-                	<div class="about">
-                    	<div class="">
-                            <img src="images/photo.jpg" height="186" width="186"  /></li>
-                        </div>
-                        <h1>Rick Dinh</h1>
-                        <h3>Legal name: Nhat Minh Dinh </h3>
-                        <h3>Learner, CSULB </h3>
-                        <h4>Mission</h4>
-                        <p>Leaving the world the better place than yesterday.</p>
+
+                <!-- Objective / Cover -->
+                <div id="blurb">
+                    <div class="cover-letter">
+                        <h3>Objective</h3>
+                        Passionate and results-driven software developer with hands-on experience in full-stack development, cloud infrastructure, and Agile teamwork.
+                        Skilled in Python, Flutter, and JavaScript with a focus on writing reliable, maintainable code that enhances user experience and business outcomes.
+                        I’m eager to contribute to forward-thinking teams where I can design scalable solutions, collaborate across disciplines, and continue refining my craft through mentorship and innovation.
                     </div>
-                    <!-- /About section -->
-                     
-                    <!-- Personal info section -->
-                	<ul class="personal-info">
-                        <li><label>Grad Date</label><span>Dec 2025 </span></li>
-                        <li><label>Location</label><span>Garden Grove, CA 92840</span></li>
-                        <li><label>Email</label><span class="word-wrap">nmdinh0132@gmail.com</span></li>
-                        <li><label>Phone</label><span>(951)609-7351</span></li>
+                </div>
+            </div>
+            <!-- /Profile -->
+
+            <!-- Menu -->
+            <nav class="menu">
+                <ul class="tabs">
+                    <li class="tmenu"><a href="#profile" class="tab-profile"><i>&#x43;</i>Profile</a></li>
+                    <li class="tmenu"><a href="#resume"><i>&#x3a;</i>Resume</a></li>
+                    <li class="tmenu"><a href="#contact"><i>&#x21;</i>Contact</a></li>
+                    <li class="tmenu"><a href="#portfolio"><i>&#x41;</i>Portfolio</a></li>
+
+                </ul>
+                <a class="prev" id="menu-prev" href="#">&#xe073;</a>
+                <a class="next" id="menu-next" href="#">&#xe076;</a>
+            </nav>
+
+            <!-- Resume -->
+            <section id="resume">
+                <div class="timeline-section">
+                    <!-- Experience -->
+                    <h3 class="main-heading">Experience</h3>
+                    <ul class="timeline">
+                        <li>
+                            <div class="timelineUnit">
+                                <h4>DNS Technology Invest Co., Ltd <span class="timelineDate">May 2024 – Aug 2025</span></h4>
+                                <h5>Software Developer Intern</h5>
+                                <ul>
+                                    <li>Developed and executed unit tests for RESTful APIs using Postman and JUnit to improve reliability and reduce post‑deployment defects.</li>
+                                    <li>Optimized SQL queries and tuned MySQL for faster responses during peak traffic.</li>
+                                    <li>Supported cybersecurity initiatives using Splunk; helped automate backup & disaster recovery with Veeam Backup & Replication.</li>
+                                    <li>Contributed in Agile sprints with Jira/Confluence; participated in GitHub PR reviews leading to high‑quality releases.</li>
+                                    <li>Returned for an additional internship term based on performance, collaboration, and fast learning.</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timelineUnit">
+                                <h4>Last‑mile Delivery Platforms <span class="timelineDate">2019 – 2025</span></h4>
+                                <h5>Driver (Uber, Amazon, Grubhub)</h5>
+                                <p>Part‑time delivery driver demonstrating reliability, time management, and customer focus.</p>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                    <!-- Projects -->
+                    <h3 class="main-heading">Projects</h3>
+                    <ul class="timeline">
+                        <li>
+                            <div class="timelineUnit">
+                                <h4>AI Assistant for Students (Senior Project) <span class="timelineDate">Aug 2023 – May 2024</span></h4>
+                                <p>Smart study buddy to manage schedules, materials, and opportunities.</p>
+                                <ul>
+                                    <li>Redesigned UI/UX to simplify navigation and improve feedback scores.</li>
+                                    <li>Used Flutter (Provider for state management), Firebase, and REST APIs.</li>
+                                    <li>Refactored code to reduce redundancy and improve scalability; collaborated to streamline workflows and code quality.</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timelineUnit">
+                                <h4>Interactive Online Resume Website</h4>
+                                <ul>
+                                <li>Responsive web resume showcasing skills and personal brand; applied UI/UX best practices with interactive elements.</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timelineUnit">
+                                <h4>Game Modding — Pokémon &amp; ARK: Survival Evolved <span class="timelineDate"></h4>
+                                <p>Created and released custom mods with new mechanics and assets; gained experience reverse‑engineering game files and scripting dynamic content; engaged communities and iterated from feedback.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                    <!-- Education -->
+                    <h3 class="main-heading">Education</h3>
+                    <ul class="timeline">
+                        <li>
+                            <div class="timelineUnit">
+                                <h4>California State University, Long Beach</h4>
+                                <h5>B.S. in Computer Science</h5>
+                                <p class="muted">Awarded by Cal‑State Long Beach.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timelineUnit">
+                                <h4>Cypress College</h4>
+                                <h5>A.A. in Mathematics &amp; Science</h5>
+                                <p class="muted">Awarded by Cypress College.</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                <!-- Skills -->
+                <div class="skills-section">
+                    <h3 class="main-heading">Technical Skills</h3>
+                    <ul class="skills">
+                        <li><h4>Python</h4><div class="rating" data-rat="6"></div></li>
+                        <li><h4>Dart (Flutter)</h4><div class="rating" data-rat="6"></div></li>
+                        <li><h4>JavaScript</h4><div class="rating" data-rat="5"></div></li>
+                        <li><h4>C++</h4><div class="rating" data-rat="5"></div></li>
+                        <li><h4>ASP.NET</h4><div class="rating" data-rat="5"></div></li>
+                        <li><h4>MySQL / SQLite</h4><div class="rating" data-rat="4"></div></li>
+                        <li><h4>Docker &amp; Jenkins</h4><div class="rating" data-rat="5"></div></li>
+                        <li><h4>AWS</h4><div class="rating" data-rat="5"></div></li>
+                        <li><h4>REST APIs • CI/CD • Agile/Scrum</h4><div class="rating" data-rat="5"></div></li>
+                        <li><h4>Testing (Postman, JUnit)</h4><div class="rating" data-rat="5"></div></li>
+                    </ul>
+
+                    <h3 class="main-heading">Soft Skills</h3>
+                    <ul class="skills">
+                        <li><h4>Critical / First‑principles Thinking</h4><div class="rating" data-rat="7"></div></li>
+                        <li><h4>Self-discipline</h4><div class="rating" data-rat="7"></div></li>
+                        <li><h4>Time Management</h4><div class="rating" data-rat="6"></div></li>
+                        <li><h4>Communication</h4><div class="rating" data-rat="6"></div></li>
+                        <li><h4>Goal Oriented</h4><div class="rating" data-rat="6"></div></li>
+                        
                         
                     </ul>
-                    <!-- /Personal info section -->
+                </div>
+                <div class="clear"></div>
+            </section>
+            <!-- /Resume -->
 
-                     <!-- Cover letter -->
-                    <div id="blurb">
-                        <div class="cover-letter">
-                            <h3>Cover Letter</h3>
-                            Hey there! I'm Rick, a Computer Science major at CSU Long Beach with big dreams and even bigger goals. I'm set to graduate by December 2025 and currently on the lookout for an internship gig where I can dive into the nitty-gritty of development and data analysis. 
-                            <br><br>
-                            You could say I'm a bit of a problem-solving enthusiast. Whether it's coding conundrums or unraveling complex datasets, I'm all about tackling challenges head-on. Armed with a mix of tech skills and analytical chops, I'm eager to roll up my sleeves and learn from the best in the biz while making some meaningful contributions along the way. 
-                            <br><br>
-                            With a knack for thinking outside the box and a dash of creativity, I'm ready to bring fresh perspectives to the table. So, if you're on the hunt for a passionate and driven team player who's all about growth and collaboration, well, you just found him! Let's dive into some cool projects together and make some magic happen. 
-                        </div>
-                    </div>
-                    <!-- /Cover letter -->
-                
-                </div>        
-                <!-- /Profile --> 
+            <!-- Portfolio -->
 
-
-
-                <!-- Menu -->
-                <nav class="menu">
-                	<ul class="tabs">
-                        <li class="tmenu"><a href="#profile" class="tab-profile"><i>&#x43;</i>Profile</a></li>
-                        <li class="tmenu"><a href="#resume"><i>&#x3a;</i>Resume</a></li>
-                        <!--<li class="tmenu"><a href="#portfolio"><i>&#x38;</i>Portfolio</a></li>-->
-                        <li class="tmenu"><a href="#contact"><i>&#x21;</i>Contact</a></li>
-                    </ul>
-                    <a class="prev" id="menu-prev" href="#">&#xe073;</a>
-                    <a class="next" id="menu-next" href="#">&#xe076;</a>
-                </nav>
-                <!-- /Menu --> 
-                
-                <!-- Resume -->
-                <section id="resume">
-                    <div class="timeline-section">
-                        <!-- Timeline for Employment  -->
-                        <h3 class="main-heading">Employment</h3>
-                        <ul class="timeline">
-                            <li>
-
-                                <div class="timelineUnit">
-                                    <h4>Last mile delivery service<span class="timelineDate">2019 - Present</span></h4>
-                                    <h5>Driver</h5>
-                                    <p>A partime last mile delivery driver. Partner with Uber,Amazon, and Grubhub.</p>
-                                </div>
-                            </li>
-                            <li>
-
-                                <div class="timelineUnit">
-                                    <h4>Freelancer<span class="timelineDate">2023 - Present</span></h4>
-                                    <h5>Programming</h5>
-                                    <p>A developer who specializes in offering programming services on platforms like Fiverr, Upwork, etc...  </p>
-                                </div>
-                            </li>
-                           
-                            <div class="clear"></div>
-                        </ul> 
-                        <!-- /Timeline for Employment  -->
-                        <!-- Timeline for Education  -->
-                        <h3 class="main-heading">Education</h3>
-                        <ul class="timeline">
-                            <li>
-                                <div class="timelineUnit">
-                                    <h4>CSU Long Beach<span class="timelineDate">2022-2025</span></h4>
-                                    <h5>College of Engineering</h5>
-                                    <p>Expecting BS : Computer Science </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timelineUnit">
-                                    <h4>Cypress College<span class="timelineDate">2019-2022</span></h4>
-                                    <h5></h5>
-                                    <p>Awarded AA : Math and Science</p>
-                                    <p>Awarded ESL Milestone-Pathway to LA WC</p>
-                                    <p>Awarded ESL Milestone-Pathway to LA OC</p>
-                                    <p>Awarded ESL Mlstn-Ptwy DH NURS PSYTCH</p>
-                                    <p>Awarded ESL Milestone-Pathway to SS</p>
-                                </div>
-                            </li>
-                            <div class="clear"></div>
-                        </ul>
-                        <!-- /Timeline for Education  -->
-
-                        <!-- Timeline for Independent Project -->
-                        <h3 class="main-heading">Independent Project</h3>
-                        <ul class="timeline">
-                            <li>
-                                <div class="timelineUnit">
-                                    <h4>Resume Website<span class="timelineDate">2023</span></h4>
-                                    <!-- <h5>College of Engineering</h5> -->
-                                    <p>Employing a robust framework, I craft bespoke personal introduction and resume websites, utilizing a blend of HTML, CSS, and PHP.</p>
-                                </div>
-                            </li>
-                            <div class="clear"></div>
-                        </ul>
-                        <!-- /Timeline for Independent Project  -->
-
-                        <!-- Timeline for Independent Project  -->
-                        <h3 class="main-heading">Independent Project</h3>
-                        <ul class="timeline">
-                            <li>
-                                <div class="timelineUnit">
-                                    <h4>AI assistant for Student (ASAApp)<span class="timelineDate">2023-2024</span></h4>
-                                    <!-- <h5>College of Engineering</h5> -->
-                                    <p>Built an AI integrated assistant for student (a.k.a a smart study buddy) that aims to increase the school life experience through easily management of schedule, materials, and opportunities. </p>
-                                    <p> Demo: https://youtu.be/_F_4O7qK7y4?si=mu2EB- YbxZFrQC6S/ </p>
-                                </div>
-                            </li>
-                            <div class="clear"></div>
-                        </ul>
-                        <!-- /Timeline for Independent Project  -->
-
-                        <!-- Timeline for Independent Project -->
-                        <h3 class="main-heading">Independent Project</h3>
-                        <ul class="timeline">
-                            <li>
-                                <div class="timelineUnit">
-                                    <h4>Modding games<span class="timelineDate">2015 - Present</span></h4>
-                                    <!-- <h5>College of Engineering</h5> -->
-                                    <p>Experienced in game modification, adept at enhancing gameplay mechanics, and creating immersive experiences through modding. Began in middle school following instructions to modify Pokemon Ruby and Sapphire. Recently, released several mods for a game called ARK: Survival Evolved.</p>
-                                </div>
-                            </li>
-                            <div class="clear"></div>
-                        </ul>
-                        <!-- /Timeline for Independent Project  -->                        
-
-                    </div>
-                    <div class="skills-section">
-                        <!-- Skills -->
-                  
-                        <h3 class="main-heading">Skills</h3> 
-                        <ul class="skills">
-                            <li>
-                                <h4>Self-discipline</h4>
-                                <div class="rating" data-rat="7"></div>
-                            </li>
-                            <li>
-                                <h4>Critical thinking</h4>
-                                <div class="rating" data-rat="7"></div>
-                            </li>
-                            <li>
-                                <h4>Time management</h4>
-                                <div class="rating" data-rat="7"></div>
-                            </li>
-                            <li>
-                                <h4>Analyzing</h4>
-                                <div class="rating" data-rat="7"></div>
-                            </li>                            
-                            <li>
-                                <h4>Written/verbal 
-                                    communication</h4>
-                                <div class="rating" data-rat="6"></div>
-                            </li>
-                            <li>
-                                <h4>Creative</h4>
-                                <div class="rating" data-rat="6"></div>
-                            </li>
-                            <li>
-                                <h4>Goal oriented</h4>
-                                <div class="rating" data-rat="6"></div>
-                            </li>
-                        </ul>
-
-                        <h3 class="main-heading">Learning skills</h3> 
-                        <ul class="skills">
-                            <li>
-                                <h4>Grinding</h4>
-                                <div class="rating" data-rat="7"></div>
-                            </li>
-                            <li>
-                                <h4>Self learning</h4>
-                                <div class="rating" data-rat="6"></div>
-                            </li>
-                            <li>
-                                <h4>Active listening</h4>
-                                <div class="rating" data-rat="6"></div>
-                            </li>
-                        </ul>
-
-                        <h3 class="main-heading">Programming Languages</h3> 
-                        <ul class="skills">
-                            <li>
-                                <h4>Flutter/Dart</h4>
-                                <div class="rating" data-rat="6"></div>
-
-                            </li>                            
-                            <li>
-                                <h4>Python</h4>
-                                <div class="rating" data-rat="6"></div>
-
-                            </li>
-                            <li>
-                                <h4>C++</h4>
-                                <div class="rating" data-rat="5"></div>
-                            </li>
-                            <li>
-                                <h4>SQL</h4>
-                                <div class="rating" data-rat="5"></div>
-                            </li>
-                            <li>
-                                <h4>HTML/CSS</h4>
-                                <div class="rating" data-rat="5"></div>
-                            </li>
-                            <li>
-                                <h4>Javascript</h4>
-                                <div class="rating" data-rat="5"></div>
-                            </li>
-                            <li>
-                                <h4>Java</h4>
-                                <div class="rating" data-rat="5"></div>
-                            </li> 
-                        </ul>                        
-                     <!-- /Skills -->
-                     </div>
-                     <div class="clear"></div>
-                     <!--<a href="#" targer ="_blank" class="button transition">Download PDF Resume File<br />(you'll need to link to this yourself)</a> -->
-                </section>
-                <!-- /Resume --> 
-
-                <!-- Portfolio -->
-                <!--
                 <section id="portfolio">
                      <ul class="cats-filter" id="portfolio-filter">
 
@@ -399,62 +288,46 @@ f<html dir="ltr" lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
                         </li>
                     </ul>
                 </section> 
-            -->
-                <!-- /Portfolio --> 
+            <!-- /Portfolio --> 
 
-                <!-- Contact -->
-                <section id="contact">
-
-                    <!-- div id="map"></!--div --> <!-- Map section -->
-
-                    <!-- Contact Info -->
-                    <div class="contact-info">
-                        <h3 class="main-heading"><span>Contact info</span></h3>
-                        <ul>
-                            <li>Nhat M Dinh
-                            <li>Garden Grove, CA</li>
-                            <li>(951) 609-7351</li>
-                            <li>nmdinh0132@gmail.com</li>
-                            <li>home.csulb.edu/~029732467</li>
-                        </ul>
-                    </div>
-                    <!-- /Contact Info -->
-                    <!-- Contact Form -->
-                    <div class="contact-form">
-                        <h3 class="main-heading"><span>Let's keep in touch</span></h3>
-                        <div id="contact-status"></div>
-                        <form action="" id="contactform">
-                            <p>
-                                <label for="name">Your Name</label>
-                                <input type="text" name="name" class="input">
-                            </p>
-                            <p>
-                                <label for="email">Your Email</label>
-                                <input type="text" name="email" class="input">
-                            </p>
-                            <p>
-                                <label for="message">Your Message</label>
-                                <textarea name="message" cols="88" rows="6" class="textarea"></textarea>
-                            </p>
-                            <input type="submit" name="submit" value="Send your message" class="button transition">
-                            <br>
-                        </form>
-                    </div>
-                    <!-- /Contact Form -->
-                </section>
-                <!-- /contact -->  
-
+            <!-- Contact -->
+            <section id="contact">
+                <div class="contact-info">
+                    <h3 class="main-heading"><span>Contact info</span></h3>
+                    <ul>
+                        <li>Rick (Nhat Minh) Dinh</li>
+                        <li>Orange County, CA</li>
+                        <li>(951) 609-7351</li>
+                        <li><a href="mailto:nmdinh0132@gmail.com">nmdinh0132@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <h3 class="main-heading"><span>Let's keep in touch</span></h3>
+                    <div id="contact-status"></div>
+                    <form action="" id="contactform">
+                        <p>
+                            <label for="name">Your Name</label>
+                            <input type="text" name="name" class="input">
+                        </p>
+                        <p>
+                            <label for="email">Your Email</label>
+                            <input type="text" name="email" class="input">
+                        </p>
+                        <p>
+                            <label for="message">Your Message</label>
+                            <textarea name="message" cols="88" rows="6" class="textarea"></textarea>
+                        </p>
+                        <input type="submit" name="submit" value="Send your message" class="button transition">
+                        <br>
+                    </form>
+                </div>
             </section>
-            <!-- /Content -->
-            
-            <!-- Footer -->
-			<footer>
-            	<div class="copyright">Copyright © Dave Winter, 2022</div>
-            </footer>
-            <!-- /Footer --> 
-            
+            <!-- /Contact -->
         </section>
-		<!-- /Container -->
 
-    </body>
+        <footer>
+            <div class="copyright">© Rick Dinh, 2025</div>
+        </footer>
+    </section>
+</body>
 </html>
