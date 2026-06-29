@@ -171,6 +171,22 @@
             text-shadow: 1px 1px 2px #000;
         }
 
+        /* ---- Background pixel rain (page background only, never under text) ---- */
+        #bg-pixel-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            display: block;
+        }
+        #container {
+            position: relative;
+            z-index: 1;
+        }
+
         /* ---- Pixel-cat skill rating (replaces grey dots) ---- */
         :root {
             --cat-body: #c9c9c9;
@@ -258,6 +274,7 @@
     </style>
 </head>
 <body>
+    <canvas id="bg-pixel-rain"></canvas>
     <section id="container">
         <header>
             <div id="logo">
@@ -275,13 +292,13 @@
                 <div class="about">
                     <div><img src="images/photo.jpg" alt="Rick Dinh" height="186" width="186"/></div>
                     <h1>Rick Dinh</h1>
-                    <h3>Builder, learner, grinder, occasional player</h3>
+                    <h3>Builder, debugger, occasional game modder</h3>
                     <h4>About me</h4>
                     <p>
                         Computer Science grad who likes taking things apart to see how they work — production APIs, slow database queries, video games I have no business modifying.
                     </p>
                     <ul class="about-highlights">
-                        <li><strong>Now:</strong> Building LOLwatch.org solo — no deadlines but my own.</li>
+                        <li><strong>Now:</strong> Doing grad school and building LOLwatch.org solo — no deadlines but my own.</li>
                         <li><strong>Before that:</strong> 2 years of combined internship and remote work experience.</li>
                         <li><strong>Looking for:</strong> A full-stack/backend role with code that holds up under real traffic, and a team worth leveling up with.</li>
                     </ul>
@@ -317,7 +334,6 @@
                 <ul class="tabs">
                     <li class="tmenu"><a href="#profile" class="tab-profile"><i>&#x43;</i>Profile</a></li>
                     <li class="tmenu"><a href="#resume"><i>&#x3a;</i>Resume</a></li>
-                    <li class="tmenu"><a href="#contact"><i>&#x21;</i>Contact</a></li>
                     <li class="tmenu"><a href="#portfolio"><i>&#x41;</i>Portfolio</a></li>
 
                 </ul>
@@ -605,39 +621,6 @@
                 </section> 
             <!-- /Portfolio --> 
 
-            <!-- Contact -->
-            <section id="contact">
-                <div class="contact-info">
-                    <h3 class="main-heading"><span>Contact info</span></h3>
-                    <ul>
-                        <li>Rick (Nhat Minh) Dinh</li>
-                        <li>Orange County, CA</li>
-                        <li>(951) 609-7351</li>
-                        <li><a href="mailto:nmdinh0132@gmail.com">nmdinh0132@gmail.com</a></li>
-                    </ul>
-                </div>
-                <div class="contact-form">
-                    <h3 class="main-heading"><span>Let's keep in touch</span></h3>
-                    <div id="contact-status"></div>
-                    <form action="" id="contactform">
-                        <p>
-                            <label for="name">Your Name</label>
-                            <input type="text" name="name" class="input">
-                        </p>
-                        <p>
-                            <label for="email">Your Email</label>
-                            <input type="text" name="email" class="input">
-                        </p>
-                        <p>
-                            <label for="message">Your Message</label>
-                            <textarea name="message" cols="88" rows="6" class="textarea"></textarea>
-                        </p>
-                        <input type="submit" name="submit" value="Send your message" class="button transition">
-                        <br>
-                    </form>
-                </div>
-            </section>
-            <!-- /Contact -->
         </section>
 
         <footer>
@@ -971,6 +954,73 @@
             }
             // Run once immediately too, in case spans already exist
             paintCats();
+        });
+
+        // ---------------------------------------------------------------
+        // Background pixel rain — ambient, page-background only.
+        // Renders on a fixed full-viewport canvas behind #container,
+        // which sits on its own opaque white background, so this never
+        // sits underneath any readable text.
+        // ---------------------------------------------------------------
+        document.addEventListener('DOMContentLoaded', function () {
+            var canvas = document.getElementById('bg-pixel-rain');
+            if (!canvas) return;
+            var ctx = canvas.getContext('2d');
+
+            // Muted, low-contrast palette so the effect stays ambient
+            // rather than competing with the resume card on top of it.
+            var COLORS = ['#cfd8dc', '#b0bec5', '#90a4ae', '#fde9b6', '#f7d488'];
+
+            var PIXEL = 4;       // size of each falling pixel block
+            var DENSITY = 0.00012; // pixels per screen-area unit (tuned for a light sprinkle, not a storm)
+
+            var drops = [];
+            var w, h;
+
+            function resize() {
+                w = window.innerWidth;
+                h = window.innerHeight;
+                canvas.width = w;
+                canvas.height = h;
+                var targetCount = Math.max(40, Math.floor(w * h * DENSITY));
+                if (drops.length < targetCount) {
+                    while (drops.length < targetCount) drops.push(makeDrop());
+                } else {
+                    drops.length = targetCount;
+                }
+            }
+
+            function makeDrop() {
+                return {
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    speed: 4 + Math.random() * 6,
+                    size: PIXEL * (1 + Math.floor(Math.random() * 2)), // 4px or 8px blocks
+                    color: COLORS[Math.floor(Math.random() * COLORS.length)],
+                    alpha: 0.25 + Math.random() * 0.35 // kept subtle — never fully opaque/bright
+                };
+            }
+
+            function step() {
+                ctx.clearRect(0, 0, w, h);
+                for (var i = 0; i < drops.length; i++) {
+                    var d = drops[i];
+                    d.y += d.speed;
+                    if (d.y > h) {
+                        d.y = -d.size;
+                        d.x = Math.random() * w;
+                    }
+                    ctx.globalAlpha = d.alpha;
+                    ctx.fillStyle = d.color;
+                    ctx.fillRect(Math.floor(d.x), Math.floor(d.y), d.size, d.size);
+                }
+                ctx.globalAlpha = 1;
+                requestAnimationFrame(step);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            requestAnimationFrame(step);
         });
     </script>
 </body>
