@@ -25,6 +25,236 @@
         .pill { display:inline-block; padding:.25rem .5rem; border:1px solid #ddd; border-radius:999px; font-size:.8rem; margin:.15rem .25rem; }
         .stack { margin:.25rem 0 .75rem; }
         .muted { color:#777; }
+
+        /* ---- Profile hover animation ---- */
+        #profile .about {
+            perspective: 800px;
+        }
+        #profile .about > div:first-child {
+            display: inline-block;
+            border-radius: 50%;
+            transition: box-shadow .4s ease;
+            box-shadow: 0 0 0 0 rgba(255,255,255,0);
+        }
+        #profile .about > div:first-child:hover {
+            box-shadow: 0 0 28px 4px rgba(255,255,255,0.55);
+        }
+        #profile .about img {
+            transition: transform .15s ease-out, box-shadow .3s ease;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        #profile .about h1,
+        #profile .about h3 {
+            transition: transform .3s ease, letter-spacing .3s ease;
+        }
+        #profile .about:hover h1 {
+            transform: translateY(-2px);
+            letter-spacing: .5px;
+        }
+        #profile .about:hover h3 {
+            transform: translateY(-1px);
+            letter-spacing: .3px;
+        }
+        #profile .personal-info li {
+            transition: transform .25s ease, background-color .25s ease, padding-left .25s ease;
+            border-radius: 4px;
+        }
+        #profile .personal-info li:hover {
+            transform: translateX(6px);
+            background-color: rgba(255,255,255,0.25);
+            padding-left: 4px;
+        }
+        #blurb .cover-letter {
+            border-radius: 4px;
+        }
+
+        /* ---- About highlights (merged About + Objective) ---- */
+        .about-highlights {
+            margin-top: 12px;
+            padding: 0;
+            list-style: none;
+        }
+        .about-highlights li {
+            font-size: 13px;
+            color: #a87f09;
+            line-height: 18px;
+            margin-bottom: 7px;
+            padding-left: 14px;
+            position: relative;
+        }
+        .about-highlights li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: #fff;
+            opacity: .8;
+        }
+        .about-highlights li strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* ---- Cat Game ---- */
+        .game-hint {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+            text-align: center;
+        }
+        #cat-game-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 760px;
+            margin: 10px auto 0;
+            border: 3px solid #333;
+            border-radius: 6px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #8ecae6 0%, #8ecae6 70%, #6a994e 70%, #6a994e 100%);
+        }
+        #cat-game {
+            display: block;
+            width: 100%;
+            image-rendering: pixelated;
+            cursor: pointer;
+        }
+        #cat-game-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.35);
+        }
+        #cat-game-overlay.hidden-overlay {
+            display: none;
+        }
+        #cat-game-play {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            background-color: #fdc750;
+            border: 3px solid #333;
+            border-radius: 8px;
+            padding: 10px 22px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #333;
+            transition: transform .1s ease;
+        }
+        #cat-game-play:hover {
+            background-color: #ffd970;
+        }
+        #cat-game-play:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #333;
+        }
+        #cat-game-msg {
+            margin-top: 12px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px #000;
+            text-align: center;
+            padding: 0 10px;
+        }
+        #cat-game-msg.hidden {
+            display: none;
+        }
+        #cat-game-score {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        /* ---- Pixel-cat skill rating (replaces grey dots) ---- */
+        :root {
+            --cat-body: #c9c9c9;
+            --cat-dark: #9a9a9a;
+            --cat-eye: #e0e0e0;
+            --cat-body-on: #e8a33d;
+            --cat-dark-on: #c97a1a;
+            --cat-eye-on: #222;
+        }
+        .skills li .rating {
+            width: auto;
+            display: flex;
+            gap: 6px;
+        }
+        .skills li .rating > span {
+            width: 13px;
+            height: 9px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            margin: 0;
+            opacity: 1;
+            flex: none;
+            image-rendering: pixelated;
+            box-shadow:
+                0px 0px 0 0 var(--cat-body),
+                12px 0px 0 0 var(--cat-body),
+                0px 2px 0 0 var(--cat-body),
+                2px 2px 0 0 var(--cat-body),
+                10px 2px 0 0 var(--cat-body),
+                12px 2px 0 0 var(--cat-body),
+                0px 4px 0 0 var(--cat-body),
+                2px 4px 0 0 var(--cat-body),
+                4px 4px 0 0 var(--cat-body),
+                6px 4px 0 0 var(--cat-body),
+                8px 4px 0 0 var(--cat-body),
+                10px 4px 0 0 var(--cat-body),
+                12px 4px 0 0 var(--cat-body),
+                0px 6px 0 0 var(--cat-body),
+                2px 6px 0 0 var(--cat-dark),
+                4px 6px 0 0 var(--cat-body),
+                6px 6px 0 0 var(--cat-eye),
+                8px 6px 0 0 var(--cat-body),
+                10px 6px 0 0 var(--cat-dark),
+                12px 6px 0 0 var(--cat-body),
+                0px 8px 0 0 var(--cat-body),
+                2px 8px 0 0 var(--cat-body),
+                4px 8px 0 0 var(--cat-body),
+                6px 8px 0 0 var(--cat-body),
+                8px 8px 0 0 var(--cat-body),
+                10px 8px 0 0 var(--cat-body),
+                12px 8px 0 0 var(--cat-body);
+            transition: none;
+        }
+        .skills li .rating > span.cat-on {
+            box-shadow:
+                0px 0px 0 0 var(--cat-body-on),
+                12px 0px 0 0 var(--cat-body-on),
+                0px 2px 0 0 var(--cat-body-on),
+                2px 2px 0 0 var(--cat-body-on),
+                10px 2px 0 0 var(--cat-body-on),
+                12px 2px 0 0 var(--cat-body-on),
+                0px 4px 0 0 var(--cat-body-on),
+                2px 4px 0 0 var(--cat-body-on),
+                4px 4px 0 0 var(--cat-body-on),
+                6px 4px 0 0 var(--cat-body-on),
+                8px 4px 0 0 var(--cat-body-on),
+                10px 4px 0 0 var(--cat-body-on),
+                12px 4px 0 0 var(--cat-body-on),
+                0px 6px 0 0 var(--cat-body-on),
+                2px 6px 0 0 var(--cat-dark-on),
+                4px 6px 0 0 var(--cat-body-on),
+                6px 6px 0 0 var(--cat-eye-on),
+                8px 6px 0 0 var(--cat-body-on),
+                10px 6px 0 0 var(--cat-dark-on),
+                12px 6px 0 0 var(--cat-body-on),
+                0px 8px 0 0 var(--cat-body-on),
+                2px 8px 0 0 var(--cat-body-on),
+                4px 8px 0 0 var(--cat-body-on),
+                6px 8px 0 0 var(--cat-body-on),
+                8px 8px 0 0 var(--cat-body-on),
+                10px 8px 0 0 var(--cat-body-on),
+                12px 8px 0 0 var(--cat-body-on);
+        }
     </style>
 </head>
 <body>
@@ -45,12 +275,16 @@
                 <div class="about">
                     <div><img src="images/photo.jpg" alt="Rick Dinh" height="186" width="186"/></div>
                     <h1>Rick Dinh</h1>
-                    <h3>Learner</h3>
+                    <h3>Builder, learner, grinder, occasional player</h3>
                     <h4>About me</h4>
                     <p>
-                        Motivated Computer Science major with hands-on experience in full‑stack development, cloud technologies, and Agile workflows.
-                        Seeking a developer role to apply technical knowledge, collaborate with experienced teams, and build impactful solutions.
+                        Computer Science grad who likes taking things apart to see how they work — production APIs, slow database queries, video games I have no business modifying.
                     </p>
+                    <ul class="about-highlights">
+                        <li><strong>Now:</strong> Building LOLwatch.org solo — no deadlines but my own.</li>
+                        <li><strong>Before that:</strong> 2 years of combined internship and remote work experience.</li>
+                        <li><strong>Looking for:</strong> A full-stack/backend role with code that holds up under real traffic, and a team worth leveling up with.</li>
+                    </ul>
                 </div>
 
                 <ul class="personal-info">
@@ -60,13 +294,19 @@
                     <li><label>Legal name</label><span>Nhat Minh Dinh</span></li>
                 </ul>
 
-                <!-- Objective / Cover -->
+                <!-- Mini Game -->
                 <div id="blurb">
                     <div class="cover-letter">
-                        <h3>Objective</h3>
-                        Passionate and results-driven software developer with hands-on experience in full-stack development, cloud infrastructure, and Agile teamwork.
-                        Skilled in Python, Flutter, and JavaScript with a focus on writing reliable, maintainable code that enhances user experience and business outcomes.
-                        I’m eager to contribute to forward-thinking teams where I can design scalable solutions, collaborate across disciplines, and continue refining my craft through mentorship and innovation.
+                        <h3>Bored? Play a game.</h3>
+                        <div id="cat-game-wrap">
+                            <canvas id="cat-game" width="760" height="220"></canvas>
+                            <div id="cat-game-overlay">
+                                <button id="cat-game-play" type="button">▶ Play</button>
+                                <p id="cat-game-msg" class="hidden">Game Over — press Space or tap to retry</p>
+                            </div>
+                            <div id="cat-game-score">Score: 0</div>
+                        </div>
+                        <p class="game-hint">Press Space / Tap to jump over the snakes 🐍</p>
                     </div>
                 </div>
             </div>
@@ -93,16 +333,15 @@
                     <ul class="timeline">
                         <li>
                             <div class="timelineUnit">
-                                <h4>DNS Technology Invest Co., Ltd <span class="timelineDate">May 2024 – Aug 2025</span></h4>
-                                <h5>Software Developer Intern</h5>
+                                <h4>DNS Technology Invest Co., Ltd <span class="timelineDate">May 2024 – May 2026</span></h4>
+                                <h5>Software Developer Intern → Remote Developer</h5>
                                 <ul>
-                                    <li>Developed and executed comprehensive unit tests for RESTful APIs using Postman and JUnit, improving software reliability and reducing post-deployment defects by 25%.</li>
-                                    <li>Optimized SQL queries and leveraged MySQL performance tuning techniques to enhance database responsiveness by 20%, resulting in smoother user experiences during peak traffic on IT management platforms.</li>
-                                    <li>Supported cybersecurity initiatives by monitoring system logs using Splunk and implementing automated backup workflows with Veeam Backup &amp; Replication, achieving 100% compliance with data protection policies.</li>
-                                    <li>Collaborated in Agile sprint cycles using Jira and Confluence, contributing to 15% faster feature delivery timelines for cloud hosting and virtualization management tools.</li>
-                                    <li>Participated in code reviews via GitHub pull requests, identifying and resolving 20+ potential vulnerabilities in backend service logic, contributing to a bug-free release cycle.</li>
-                                    <li>Contributed to the CI/CD pipeline by integrating automated build and test stages in Jenkins and GitHub Actions, improving deployment reliability.</li>
-                                    <li>Invited to return for a second internship term based on strong performance and collaboration, completing over 9 months of hands-on software development experience.</li>
+                                    <li>Developed intuitive web interfaces using HTML, CSS, and React, and executed comprehensive unit tests for RESTful APIs with Postman and JUnit, reducing post-deployment defects by 25%.</li>
+                                    <li>Optimized SQL queries and applied responsive design principles to enhance database responsiveness and UI adaptability, improving performance by 20% during peak traffic.</li>
+                                    <li>Supported cybersecurity initiatives by monitoring system logs with Splunk and debugging asynchronous workflows in Veeam Backup &amp; Replication, achieving 100% compliance with data protection policies.</li>
+                                    <li>Collaborated in Agile sprint cycles using Jira and Confluence, practicing version control with Git and conducting code reviews on GitHub to resolve 20+ potential vulnerabilities.</li>
+                                    <li>Contributed to the CI/CD pipeline by integrating automated build and test stages in Jenkins and GitHub Actions, implementing asynchronous programming patterns to improve deployment reliability.</li>
+                                    <li>Invited to return after 6 months of internship for a remote position based on strong performance and collaboration.</li>
 
                                 </ul>
                             </div>
@@ -112,7 +351,7 @@
                                 <h4>Last‑mile Delivery Platforms <span class="timelineDate">2019 – 2025</span></h4>
                                 <h5>Driver (Uber, Amazon, Grubhub)</h5>
                                 <ul>
-                                    <li>Part‑time delivery driver demonstrating reliability, time management, and customer focus.</li>
+                                    <li>Logged thousands of on-time deliveries across three platforms — turns out "ship reliably under deadline pressure" is a transferable skill.</li>
                                 </ul>                             
                             </div>
                         </li>
@@ -124,19 +363,20 @@
                     <ul class="timeline">
                         <li>
                             <div class="timelineUnit">
-                                <h4>LOLwatch <span class="timelineDate">Nov 2025 – Now</span></h4>
+                                <h4>LOLwatch.org <span class="timelineDate">2026 – Present</span></h4>
                                 <ul>
-                                    <li>Developing LoLwatch.org, a community-driven esports Pick’em web app where users predict League of Legends match outcomes, compete with friends, and view live stats</li>
-                                    <li>Built using Next.js (React + TypeScript), Prisma, and Auth.js, enabling real-time match data ingestion and predictivestatistics</li>
-                                    <li>Implemented data pipelines and interactive visualizations to analyze user prediction accuracy and tournament outcomes</li>
-                                    <li>It’s not affiliated with Riot Games</li>                                                                        
+                                    <li>Architected and built a full-stack esports prediction platform — forecast League of Legends match outcomes, compete on leaderboards with friends, and track live tournament stats.</li>
+                                    <li>Engineered on Next.js (React + TypeScript), Prisma ORM, and Auth.js with a type-safe, scalable architecture for real-time match data ingestion and automated predictive analytics.</li>
+                                    <li>Built data pipelines that process live match data into a relational schema, powering statistical models for prediction accuracy and tournament performance trends.</li>
+                                    <li>Designed interactive visualizations surfacing win-probability metrics, prediction leaderboards, and historical accuracy trends.</li>
+                                    <li>Not affiliated with Riot Games. Just a fan with a database and too much free time.</li>                                                                        
                                 </ul>
                             </div>
                         </li>                        
                         <li>
                             <div class="timelineUnit">
                                 <h4>AI Assistant for Students <span class="timelineDate">Aug 2023 – May 2024</span></h4>
-                                <p>Smart study buddy to manage schedules, materials, and opportunities.</p>
+                                <p>A study buddy that remembers your deadlines so you don't have to.</p>
                                 <ul>
                                     <li>Developed an AI-integrated mobile application to enhance student productivity by managing schedules, materials, and academic opportunities in one centralized platform</li>
                                     <li>Redesigned UI/UX workflows based on user testing feedback, improving navigation efficiency by 40% as measured by task completion time</li>
@@ -148,7 +388,7 @@
                         </li>
                         <li>
                             <div class="timelineUnit">
-                                <h4>Online Resume Website <span class="timelineDate">Jan 2024 – Dec 2024</span></h4>
+                                <h4>Interactive Online Resume Website <span class="timelineDate">Jan 2024 – June 2024</span></h4>
                                 <ul>
                                     <li>Designed and developed a responsive online portfolio using HTML, CSS, and JavaScript to showcase projects and technical skills with a mobile-first approach</li>
                                     <li>Integrated smooth animations and accessible UI elements, enhancing cross-device user experience and improving engagement on both desktop and mobile platforms</li>
@@ -157,11 +397,10 @@
                         </li>
                         <li>
                             <div class="timelineUnit">
-                                <h4>Game Modding — Pokémon &amp; ARK: Survival Evolved <span class="timelineDate"></h4>
+                                <h4>Game Modding Projects <span class="timelineDate">May 2021 – Dec 2021</span></h4>
                                 <ul>
-                                <li>Created and released custom mods for Pokemon using C, and ARK: Survival Evolved using Unreal Engine 4 </li>
-                                <li>Reverse-engineered game files and wrote scripts to introduce new gameplay mechanics, assets, and storyline features</li>
-                                <li>Cultivated robust relationships with 200+ active community members across diverse online modding platforms, including Discord, Reddit, and dedicated forums, soliciting direct feedback to enhance product development strategies</li>
+                                <li>Created and released custom mods for ARK: Survival Evolved using Unreal Engine 4 — reverse-engineered game files and scripted new mechanics that weren't supposed to be possible.</li>
+                                <li>Grew and supported a modding community of 200+ active members across Discord, Reddit, and forums, turning their feedback into the next update.</li>
                                 </ul>
                             </div>
                         </li>
@@ -175,25 +414,29 @@
                     <h3 class="main-heading">Technical Skills</h3>
                     <ul class="skills">
                         <li><h4>Python</h4><div class="rating" data-rat="6"></div></li>
+                        <li><h4>JavaScript / TypeScript</h4><div class="rating" data-rat="5"></div></li>
+                        <li><h4>React / Next.js</h4><div class="rating" data-rat="5"></div></li>
                         <li><h4>Dart (Flutter)</h4><div class="rating" data-rat="6"></div></li>
-                        <li><h4>JavaScript</h4><div class="rating" data-rat="4"></div></li>
                         <li><h4>C++</h4><div class="rating" data-rat="5"></div></li>
+                        <li><h4>Node.js / FastAPI</h4><div class="rating" data-rat="4"></div></li>
                         <li><h4>ASP.NET</h4><div class="rating" data-rat="5"></div></li>
                         <li><h4>MySQL / SQLite</h4><div class="rating" data-rat="5"></div></li>
-                        <li><h4>Docker &amp; Jenkins</h4><div class="rating" data-rat="4"></div></li>
-                        <li><h4>AWS</h4><div class="rating" data-rat="5"></div></li>
+                        <li><h4>AWS &amp; Docker</h4><div class="rating" data-rat="5"></div></li>
+                        <li><h4>Firebase &amp; Auth.js</h4><div class="rating" data-rat="5"></div></li>
                         <li><h4>REST APIs • CI/CD • Agile/Scrum</h4><div class="rating" data-rat="5"></div></li>
                         <li><h4>Testing (Postman, JUnit)</h4><div class="rating" data-rat="5"></div></li>
+                        <li><h4>Splunk &amp; Security Monitoring</h4><div class="rating" data-rat="4"></div></li>
                     </ul>
 
                     <h3 class="main-heading">Soft Skills</h3>
                     <ul class="skills">
                         <li><h4>Critical / First‑principles Thinking</h4><div class="rating" data-rat="7"></div></li>
                         <li><h4>Self-discipline</h4><div class="rating" data-rat="7"></div></li>
+                        <li><h4>Self-directed Learning</h4><div class="rating" data-rat="7"></div></li>
                         <li><h4>Time Management</h4><div class="rating" data-rat="6"></div></li>
                         <li><h4>Communication</h4><div class="rating" data-rat="6"></div></li>
                         <li><h4>Goal Oriented</h4><div class="rating" data-rat="6"></div></li>
-                        <li><h4>Net Working</h4><div class="rating" data-rat="6"></div></li>
+                        <li><h4>Networking</h4><div class="rating" data-rat="6"></div></li>
                         
                     </ul>
                 </div>
@@ -204,15 +447,22 @@
                     <ul class="timeline">
                         <li>
                             <div class="timelineUnit">
-                                <h4>California State University, Long Beach</h4>
+                                <h4>The University of Texas at Austin <span class="timelineDate">Dec 2027</span></h4>
+                                <h5>M.S. in Computer Science</h5>
+                                <p class="muted">In progress, expected Dec 2027.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timelineUnit">
+                                <h4>California State University, Long Beach <span class="timelineDate">Dec 2025</span></h4>
                                 <h5>B.S. in Computer Science</h5>
                                 <p class="muted">Awarded by Cal‑State Long Beach.</p>
                             </div>
                         </li>
                         <li>
                             <div class="timelineUnit">
-                                <h4>Cypress College</h4>
-                                <h5>A.A. in Mathematics &amp; Science</h5>
+                                <h4>Cypress College <span class="timelineDate">May 2022</span></h4>
+                                <h5>Liberal Arts — Mathematics &amp; Science</h5>
                                 <p class="muted">Awarded by Cypress College.</p>
                             </div>
                         </li>
@@ -239,19 +489,19 @@
 
                          <li><a href="" class="transition" data-filter=".music">Music</a></li>
                     </ul>
-                    <div class="extra-text">I've worked on some cool things... take a look!</div>
+                    <div class="extra-text">Some things I've built, broken, and (mostly) fixed.</div>
                     <ul id="portfolio-list">
 
                         <li class="webdev">
                             <a href="https://www.lolwatch.org/" target="_new" title="The open Pick'em for every League of Legends tournament.">
                                 <img src="portfolio/lolwatch.png" alt="" >
-                                <h2 class="title">Click for Demo</h2>
+                                <h2 class="title">LOLwatch — Live Demo</h2>
                                 <span class="categorie">Web Development</span> 
                             </a>
                     	</li>                         
                         
                         <li class="apps opensource">
-                            <a href="portfolio/saapp-frontpage-testing.jpg" rel="portfolio[1]" title="Lorem ipsum dolor sit amet, consectetur adipiscing Vivamus sit amet ligula non lectus.consectetur adipiscingVivamus sit amet" class="folio">
+                            <a href="portfolio/saapp-frontpage-testing.jpg" rel="portfolio[1]" title="AI Assistant for Students: an AI-integrated mobile app for managing schedules, materials, and academic opportunities." class="folio">
                                 <img src="portfolio/asaApp.jpg" alt="Image Title">
                                 <h2 class="title">AI Assistant for Students</h2>
                                 <span class="categorie">Apps / Web Development</span> 
@@ -273,7 +523,7 @@
                         <li class="webdev">
                             <a href="https://youtu.be/cZ-P7iGr6ZM" target="_new" title="AI Assistant Full Demo">
                                 <img src="portfolio/asaApp.jpg" alt="" >
-                                <h2 class="title">Click for Demo</h2>
+                                <h2 class="title">AI Assistant — Video Demo</h2>
                                 <span class="categorie">Web Development</span> 
                             </a>
                     	</li>                        
@@ -289,7 +539,7 @@
                         <li class="webdev">
                             <a href="https://youtu.be/dQw4w9WgXcQ?si=hNBa5galL7IMJJdH" target="_new" title="Yes, you just got rick-rolled">
                                 <img src="portfolio/3-thumb.jpg" alt="" >
-                                <h2 class="title">Click for Demo</h2>
+                                <h2 class="title">Bonus Demo (Trust Me)</h2>
                                 <span class="categorie">Web Development</span> 
                             </a>
                     	</li>   
@@ -394,5 +644,334 @@
             <div class="copyright">© Rick Dinh, 2025</div>
         </footer>
     </section>
+
+    <script>
+        // Photo tilt-toward-cursor effect (Profile section)
+        document.addEventListener('DOMContentLoaded', function () {
+            var photo = document.querySelector('#profile .about img');
+            var wrap = photo ? photo.closest('div') : null;
+            if (!photo || !wrap) return;
+
+            wrap.addEventListener('mousemove', function (e) {
+                var rect = wrap.getBoundingClientRect();
+                var x = (e.clientX - rect.left) / rect.width - 0.5;
+                var y = (e.clientY - rect.top) / rect.height - 0.5;
+                var tiltMax = 14;
+                photo.style.transform =
+                    'rotateY(' + (x * tiltMax) + 'deg) rotateX(' + (-y * tiltMax) + 'deg) scale(1.05)';
+            });
+
+            wrap.addEventListener('mouseleave', function () {
+                photo.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+            });
+        });
+
+        // ---------------------------------------------------------------
+        // Cat vs Snakes — mini game (Chrome-dino style)
+        // ---------------------------------------------------------------
+        document.addEventListener('DOMContentLoaded', function () {
+            var canvas = document.getElementById('cat-game');
+            if (!canvas) return;
+            var ctx = canvas.getContext('2d');
+
+            // Internal logical resolution (canvas is CSS-scaled to fit container)
+            var W = 760, H = 220;
+            canvas.width = W;
+            canvas.height = H;
+
+            var overlay = document.getElementById('cat-game-overlay');
+            var playBtn = document.getElementById('cat-game-play');
+            var msgEl = document.getElementById('cat-game-msg');
+            var scoreEl = document.getElementById('cat-game-score');
+
+            var GROUND_Y = H - 50;
+
+            var PALETTE = {
+                sky1: '#8ecae6', sky2: '#bde0fe',
+                grass: '#6a994e', dirt: '#a98467',
+                catBody: '#e8a33d', catBelly: '#fff3d6', catEar: '#c97a1a',
+                catEye: '#222', catNoseLine: '#222',
+                snakeBody: '#52b788', snakeBody2: '#2d6a4f', snakeEye: '#fff',
+                cloud: '#ffffff'
+            };
+
+            var state = 'idle'; // idle | running | over
+            var score = 0;
+            var speed = 5;
+            var baseSpeed = 5;
+            var gravity = 0.85;
+            var groundOffset = 0;
+
+            var cat = {
+                x: 70, y: GROUND_Y - 36, w: 40, h: 36,
+                vy: 0, jumping: false, frame: 0, frameTimer: 0
+            };
+
+            var obstacles = [];
+            var spawnTimer = 0;
+            var spawnInterval = 90;
+            var clouds = [
+                { x: 100, y: 30, s: 1 }, { x: 320, y: 55, s: 0.7 }, { x: 560, y: 25, s: 1.2 }
+            ];
+
+            function resetGame() {
+                score = 0;
+                speed = baseSpeed;
+                cat.y = GROUND_Y - cat.h;
+                cat.vy = 0;
+                cat.jumping = false;
+                obstacles = [];
+                spawnTimer = 0;
+                spawnInterval = 90;
+                groundOffset = 0;
+            }
+
+            function jump() {
+                if (state === 'idle') { startGame(); return; }
+                if (state === 'over') { startGame(); return; }
+                if (state === 'running' && !cat.jumping) {
+                    cat.vy = -13.5;
+                    cat.jumping = true;
+                }
+            }
+
+            function startGame() {
+                resetGame();
+                state = 'running';
+                overlay.classList.add('hidden-overlay');
+                playBtn.style.display = '';
+                msgEl.classList.add('hidden');
+                requestAnimationFrame(loop);
+            }
+
+            function endGame() {
+                state = 'over';
+                overlay.classList.remove('hidden-overlay');
+                playBtn.style.display = 'none';
+                msgEl.classList.remove('hidden');
+                msgEl.textContent = 'Game Over — Score ' + Math.floor(score) + ' — press Space or tap to retry';
+            }
+
+            // ---- Drawing helpers (pixel-block style, no image assets needed) ----
+            function drawBackground() {
+                // sky
+                var grad = ctx.createLinearGradient(0, 0, 0, GROUND_Y);
+                grad.addColorStop(0, PALETTE.sky2);
+                grad.addColorStop(1, PALETTE.sky1);
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, W, GROUND_Y);
+
+                // clouds (parallax, slow scroll)
+                ctx.fillStyle = PALETTE.cloud;
+                clouds.forEach(function (c) {
+                    c.x -= speed * 0.15;
+                    if (c.x < -60) c.x = W + 60;
+                    drawCloud(c.x, c.y, c.s);
+                });
+
+                // ground
+                ctx.fillStyle = PALETTE.grass;
+                ctx.fillRect(0, GROUND_Y, W, H - GROUND_Y);
+                ctx.fillStyle = PALETTE.dirt;
+                ctx.fillRect(0, GROUND_Y + 10, W, H - GROUND_Y - 10);
+
+                // scrolling dashed ground line for motion feel
+                ctx.fillStyle = '#557a46';
+                var dashW = 18, gap = 14;
+                groundOffset = (groundOffset + speed) % (dashW + gap);
+                for (var x = -dashW + (dashW + gap - groundOffset); x < W; x += dashW + gap) {
+                    ctx.fillRect(x, GROUND_Y + 2, dashW, 4);
+                }
+            }
+
+            function drawCloud(x, y, s) {
+                ctx.beginPath();
+                ctx.arc(x, y, 10 * s, 0, Math.PI * 2);
+                ctx.arc(x + 12 * s, y - 6 * s, 8 * s, 0, Math.PI * 2);
+                ctx.arc(x + 22 * s, y, 10 * s, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            function drawCat() {
+                var x = cat.x, y = cat.y, w = cat.w, h = cat.h;
+                cat.frameTimer++;
+                if (cat.frameTimer > 6) { cat.frame = (cat.frame + 1) % 2; cat.frameTimer = 0; }
+
+                // body
+                ctx.fillStyle = PALETTE.catBody;
+                ctx.fillRect(x, y + 8, w, h - 14);
+                // belly
+                ctx.fillStyle = PALETTE.catBelly;
+                ctx.fillRect(x + 6, y + 16, w - 14, h - 20);
+                // head
+                ctx.fillStyle = PALETTE.catBody;
+                ctx.fillRect(x + w - 18, y, 18, 18);
+                // ears
+                ctx.fillStyle = PALETTE.catEar;
+                ctx.fillRect(x + w - 18, y - 6, 6, 6);
+                ctx.fillRect(x + w - 6, y - 6, 6, 6);
+                // eye
+                ctx.fillStyle = PALETTE.catEye;
+                ctx.fillRect(x + w - 8, y + 6, 3, 3);
+                // legs (alternate frame = running animation), frozen while jumping
+                ctx.fillStyle = PALETTE.catEar;
+                if (cat.jumping) {
+                    ctx.fillRect(x + 4, y + h - 8, 6, 8);
+                    ctx.fillRect(x + w - 14, y + h - 8, 6, 8);
+                } else if (cat.frame === 0) {
+                    ctx.fillRect(x + 4, y + h - 8, 6, 10);
+                    ctx.fillRect(x + w - 14, y + h - 4, 6, 6);
+                } else {
+                    ctx.fillRect(x + 4, y + h - 4, 6, 6);
+                    ctx.fillRect(x + w - 14, y + h - 8, 6, 10);
+                }
+                // tail
+                ctx.fillStyle = PALETTE.catBody;
+                ctx.fillRect(x - 8, y + 10, 10, 5);
+            }
+
+            function spawnObstacle() {
+                var len = 2 + Math.floor(Math.random() * 3); // 2-4 segments
+                obstacles.push({
+                    x: W + 10,
+                    len: len,
+                    w: len * 16,
+                    h: 16,
+                    passed: false
+                });
+            }
+
+            function drawSnake(ob) {
+                var y = GROUND_Y - ob.h;
+                for (var i = 0; i < ob.len; i++) {
+                    ctx.fillStyle = (i % 2 === 0) ? PALETTE.snakeBody : PALETTE.snakeBody2;
+                    ctx.fillRect(ob.x + i * 16, y + (i % 2 === 0 ? 0 : 3), 16, 16);
+                }
+                // head + eye at the front (left side, direction of travel)
+                ctx.fillStyle = PALETTE.snakeBody;
+                ctx.fillRect(ob.x - 4, y - 2, 14, 14);
+                ctx.fillStyle = PALETTE.snakeEye;
+                ctx.fillRect(ob.x, y + 2, 2, 2);
+            }
+
+            function rectsOverlap(ax, ay, aw, ah, bx, by, bw, bh) {
+                return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
+            }
+
+            function update() {
+                // difficulty ramps with score
+                speed = baseSpeed + Math.min(score / 250, 7);
+                spawnInterval = Math.max(40, 90 - Math.floor(score / 20));
+
+                // cat physics
+                cat.vy += gravity;
+                cat.y += cat.vy;
+                if (cat.y >= GROUND_Y - cat.h) {
+                    cat.y = GROUND_Y - cat.h;
+                    cat.vy = 0;
+                    cat.jumping = false;
+                }
+
+                // spawn + move obstacles
+                spawnTimer++;
+                if (spawnTimer >= spawnInterval) {
+                    spawnTimer = 0;
+                    spawnObstacle();
+                }
+                obstacles.forEach(function (ob) { ob.x -= speed; });
+                obstacles = obstacles.filter(function (ob) { return ob.x + ob.w > -20; });
+
+                // collision + scoring
+                var catHitX = cat.x + 8, catHitY = cat.y + 8, catHitW = cat.w - 14, catHitH = cat.h - 14;
+                for (var i = 0; i < obstacles.length; i++) {
+                    var ob = obstacles[i];
+                    var obY = GROUND_Y - ob.h;
+                    if (rectsOverlap(catHitX, catHitY, catHitW, catHitH, ob.x, obY, ob.w, ob.h)) {
+                        endGame();
+                        return;
+                    }
+                    if (!ob.passed && ob.x + ob.w < cat.x) {
+                        ob.passed = true;
+                        score += 10;
+                    }
+                }
+
+                score += 0.15;
+                scoreEl.textContent = 'Score: ' + Math.floor(score);
+            }
+
+            function render() {
+                ctx.clearRect(0, 0, W, H);
+                drawBackground();
+                obstacles.forEach(drawSnake);
+                drawCat();
+            }
+
+            function loop() {
+                if (state !== 'running') return;
+                update();
+                render();
+                requestAnimationFrame(loop);
+            }
+
+            // initial idle frame so canvas isn't blank before Play is pressed
+            render();
+
+            // ---- Input ----
+            playBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                startGame();
+            });
+            canvas.addEventListener('click', function () {
+                if (state === 'running') jump();
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.code === 'Space' || e.key === ' ' || e.code === 'ArrowUp') {
+                    // Only hijack space if the game area is relevant / nothing else focused in a form field
+                    var tag = document.activeElement ? document.activeElement.tagName : '';
+                    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+                    e.preventDefault();
+                    jump();
+                }
+            });
+            // touch support for the overlay retry message tap
+            overlay.addEventListener('click', function () {
+                if (state === 'over') startGame();
+            });
+        });
+
+        // ---------------------------------------------------------------
+        // Pixel-cat skill ratings — mark filled cats based on data-rat
+        // (custom.js still builds the 7 <span> placeholders; we just
+        // flag which ones count as "filled" with a class instead of
+        // relying on opacity animation, so the pixel-art shows clearly)
+        // ---------------------------------------------------------------
+        document.addEventListener('DOMContentLoaded', function () {
+            function paintCats() {
+                document.querySelectorAll('.skills li .rating').forEach(function (ratingEl) {
+                    var rat = parseInt(ratingEl.getAttribute('data-rat'), 10) || 0;
+                    var spans = ratingEl.querySelectorAll('span');
+                    spans.forEach(function (span, i) {
+                        if (i < rat) {
+                            span.classList.add('cat-on');
+                        } else {
+                            span.classList.remove('cat-on');
+                        }
+                    });
+                });
+            }
+            // custom.js (jQuery) appends the <span> placeholders asynchronously
+            // on its own ready handler. Watch for them rather than guessing timing.
+            var ratingContainers = document.querySelectorAll('.skills li .rating');
+            if (ratingContainers.length) {
+                var observer = new MutationObserver(paintCats);
+                ratingContainers.forEach(function (el) {
+                    observer.observe(el, { childList: true });
+                });
+            }
+            // Run once immediately too, in case spans already exist
+            paintCats();
+        });
+    </script>
 </body>
 </html>
