@@ -279,11 +279,8 @@
         <header>
             <div id="logo">
                 <h2>Rick Dinh</h2>
-                <h4>(aka Nhat Minh Dinh) • Software Developer</h4>
+                <h4>(aka Nhat Minh Dinh) • Problem solver </h4>
             </div>
-            <ul class="socialicons">
-                <li><a href="mailto:nmdinh0132@gmail.com" class="transition">&#x31;</a></li>
-            </ul>
         </header>
 
         <section id="content">
@@ -298,7 +295,7 @@
                         Computer Science grad who likes taking things apart to see how they work — production APIs, slow database queries, video games I have no business modifying.
                     </p>
                     <ul class="about-highlights">
-                        <li><strong>Now:</strong> Doing grad school and building LOLwatch.org solo — no deadlines but my own.</li>
+                        <li><strong>Now:</strong> Doing grad school and building solo projects — no deadlines but my own.</li>
                         <li><strong>Before that:</strong> 2 years of combined internship and remote work experience.</li>
                         <li><strong>Looking for:</strong> A full-stack/backend role with code that holds up under real traffic, and a team worth leveling up with.</li>
                     </ul>
@@ -957,22 +954,40 @@
         });
 
         // ---------------------------------------------------------------
-        // Background pixel rain — ambient, page-background only.
-        // Renders on a fixed full-viewport canvas behind #container,
-        // which sits on its own opaque white background, so this never
-        // sits underneath any readable text.
+        // Background pixel CAT rain — ambient, page-background only.
+        // Each drop is a tiny pixel-art cat face drawn on canvas.
         // ---------------------------------------------------------------
         document.addEventListener('DOMContentLoaded', function () {
             var canvas = document.getElementById('bg-pixel-rain');
             if (!canvas) return;
             var ctx = canvas.getContext('2d');
 
-            // Muted, low-contrast palette so the effect stays ambient
-            // rather than competing with the resume card on top of it.
-            var COLORS = ['#cfd8dc', '#b0bec5', '#90a4ae', '#fde9b6', '#f7d488'];
+            // Pixel-art cat sprite: 10 cols x 10 rows, 1 = body, 2 = ear/dark, 3 = eye, 0 = empty
+            var CAT_SPRITE = [
+                [0,0,1,0,0,0,0,1,0,0],
+                [0,0,1,1,0,0,1,1,0,0],
+                [0,1,1,1,1,1,1,1,1,0],
+                [1,1,1,1,1,1,1,1,1,1],
+                [1,1,3,1,1,1,1,3,1,1],
+                [1,1,1,1,2,2,1,1,1,1],
+                [1,1,1,1,1,1,1,1,1,1],
+                [0,1,1,0,1,1,0,1,1,0],
+                [0,1,0,0,0,0,0,0,1,0],
+                [0,0,0,0,0,0,0,0,0,0],
+            ];
+            var CAT_W = CAT_SPRITE[0].length;
+            var CAT_H = CAT_SPRITE.length;
 
-            var PIXEL = 4;       // size of each falling pixel block
-            var DENSITY = 0.00012; // pixels per screen-area unit (tuned for a light sprinkle, not a storm)
+            // Two tint palettes — muted greys and soft golds matching the site
+            var TINTS = [
+                { body: '#b0bec5', dark: '#78909c', eye: '#eceff1' }, // cool grey
+                { body: '#cfd8dc', dark: '#90a4ae', eye: '#ffffff' }, // light grey
+                { body: '#f7d488', dark: '#e8a33d', eye: '#333'    }, // gold/yellow
+                { body: '#fde9b6', dark: '#fdc750', eye: '#555'    }, // pale gold
+            ];
+
+            var SCALE = 3;       // each sprite pixel = 3×3 canvas pixels → ~30px tall cat
+            var DENSITY = 0.00004; // cats per viewport area
 
             var drops = [];
             var w, h;
@@ -980,25 +995,42 @@
             function resize() {
                 w = window.innerWidth;
                 h = window.innerHeight;
-                canvas.width = w;
+                canvas.width  = w;
                 canvas.height = h;
-                var targetCount = Math.max(40, Math.floor(w * h * DENSITY));
-                if (drops.length < targetCount) {
-                    while (drops.length < targetCount) drops.push(makeDrop());
-                } else {
-                    drops.length = targetCount;
-                }
+                var target = Math.max(15, Math.floor(w * h * DENSITY));
+                while (drops.length < target) drops.push(makeDrop(true));
+                drops.length = target;
             }
 
-            function makeDrop() {
+            function makeDrop(scatter) {
+                var tint = TINTS[Math.floor(Math.random() * TINTS.length)];
                 return {
-                    x: Math.random() * w,
-                    y: Math.random() * h,
-                    speed: 4 + Math.random() * 6,
-                    size: PIXEL * (1 + Math.floor(Math.random() * 2)), // 4px or 8px blocks
-                    color: COLORS[Math.floor(Math.random() * COLORS.length)],
-                    alpha: 0.25 + Math.random() * 0.35 // kept subtle — never fully opaque/bright
+                    x:     Math.random() * w,
+                    y:     scatter ? Math.random() * h : -(CAT_H * SCALE + 4),
+                    speed: 3 + Math.random() * 6,
+                    scale: SCALE,
+                    alpha: 0.25 + Math.random() * 0.35,
+                    tint:  tint
                 };
+            }
+
+            function drawCatAt(d) {
+                ctx.globalAlpha = d.alpha;
+                var s = d.scale;
+                for (var row = 0; row < CAT_H; row++) {
+                    for (var col = 0; col < CAT_W; col++) {
+                        var v = CAT_SPRITE[row][col];
+                        if (v === 0) continue;
+                        if      (v === 1) ctx.fillStyle = d.tint.body;
+                        else if (v === 2) ctx.fillStyle = d.tint.dark;
+                        else if (v === 3) ctx.fillStyle = d.tint.eye;
+                        ctx.fillRect(
+                            Math.floor(d.x) + col * s,
+                            Math.floor(d.y) + row * s,
+                            s, s
+                        );
+                    }
+                }
             }
 
             function step() {
@@ -1006,13 +1038,10 @@
                 for (var i = 0; i < drops.length; i++) {
                     var d = drops[i];
                     d.y += d.speed;
-                    if (d.y > h) {
-                        d.y = -d.size;
-                        d.x = Math.random() * w;
+                    if (d.y > h + CAT_H * d.scale) {
+                        drops[i] = makeDrop(false);
                     }
-                    ctx.globalAlpha = d.alpha;
-                    ctx.fillStyle = d.color;
-                    ctx.fillRect(Math.floor(d.x), Math.floor(d.y), d.size, d.size);
+                    drawCatAt(d);
                 }
                 ctx.globalAlpha = 1;
                 requestAnimationFrame(step);
