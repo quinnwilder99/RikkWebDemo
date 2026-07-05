@@ -26,6 +26,27 @@
         .stack { margin:.25rem 0 .75rem; }
         .muted { color:#777; }
 
+        /* ---- Profile text legibility ---- */
+        .about p {
+            font-size: 15.5px !important;
+            font-weight: 500 !important;
+            line-height: 23px !important;
+        }
+        .about-highlights li {
+            font-size: 14.5px !important;
+            font-weight: 500 !important;
+            line-height: 21px !important;
+        }
+        .personal-info li {
+            font-size: 15px !important;
+        }
+        .personal-info li span {
+            font-weight: 500 !important;
+        }
+        .personal-info li label {
+            font-size: 13.5px !important;
+        }
+
         /* ---- Profile hover animation ---- */
         #profile .about {
             perspective: 800px;
@@ -272,8 +293,159 @@
                 12px 8px 0 0 var(--cat-body-on);
         }
     </style>
+    <!-- FANCY UPGRADES v2 — CSS -->
+    <style>
+    /* Scroll Progress Bar */
+    #scroll-progress {
+        position:fixed;top:0;left:0;height:3px;width:0%;
+        background:linear-gradient(90deg,#fdc750 0%,#ff6b6b 50%,#fdc750 100%);
+        background-size:200% 100%;
+        animation:grad-shift 2s linear infinite;
+        z-index:99999;pointer-events:none;transition:width .05s linear;
+    }
+    @keyframes grad-shift { 0%{background-position:0% 0} 100%{background-position:200% 0} }
+
+    /* Dark Mode Toggle */
+    #dark-toggle {
+        position:fixed;top:12px;right:16px;z-index:9999;
+        background:#1a1a1a;color:#fdc750;border:2px solid #fdc750;
+        border-radius:20px;padding:5px 13px;font-size:12px;font-weight:700;
+        font-family:'Open Sans',Arial;cursor:pointer;letter-spacing:.4px;
+        transition:background .25s,color .25s,transform .1s;
+        box-shadow:0 2px 10px rgba(0,0,0,.45);
+    }
+    #dark-toggle:hover{background:#fdc750;color:#111;transform:scale(1.06);}
+
+    /* Back to Top */
+    #back-to-top {
+        position:fixed;bottom:24px;right:20px;z-index:9998;
+        background:#fdc750;color:#111;border:none;border-radius:50%;
+        width:40px;height:40px;font-size:20px;font-weight:900;
+        line-height:40px;text-align:center;cursor:pointer;
+        box-shadow:0 3px 12px rgba(0,0,0,.3);
+        opacity:0;transform:translateY(20px);
+        transition:opacity .3s,transform .3s;
+    }
+    #back-to-top.show  {opacity:1;transform:translateY(0);}
+    #back-to-top:hover {background:#fff;transform:translateY(-4px);}
+
+    /* Glitch Name */
+    @keyframes glitch-a {
+        0%,88%,100%{clip-path:inset(0 0 100% 0);transform:translate(0);}
+        90%{clip-path:inset(0 0 55% 0);transform:translate(-3px,1px);}
+        92%{clip-path:inset(30% 0 40% 0);transform:translate(3px,-1px);}
+        94%{clip-path:inset(70% 0 10% 0);transform:translate(-2px,1px);}
+        96%{clip-path:inset(10% 0 75% 0);transform:translate(2px,0);}
+    }
+    @keyframes glitch-b {
+        0%,88%,100%{clip-path:inset(0 0 100% 0);transform:translate(0);}
+        89%{clip-path:inset(50% 0 25% 0);transform:translate(4px,0);}
+        91%{clip-path:inset(10% 0 65% 0);transform:translate(-3px,1px);}
+        93%{clip-path:inset(80% 0 5% 0);transform:translate(2px,-1px);}
+        95%{clip-path:inset(20% 0 55% 0);transform:translate(-4px,0);}
+    }
+    .glitch-name{position:relative;display:inline-block;}
+    .glitch-name::before,.glitch-name::after{
+        content:attr(data-text);
+        position:absolute;top:0;left:0;width:100%;height:100%;
+        color:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;
+    }
+    .glitch-name::before{color:#ff6ec7;animation:glitch-a 5s steps(1) infinite;}
+    .glitch-name::after {color:#4fffef;animation:glitch-b 5s steps(1) infinite;animation-delay:.2s;}
+
+    /* Scroll Reveal */
+    body.js-fancy .timeline li {
+        opacity:0;transform:translateX(-22px);
+        transition:opacity .55s ease,transform .55s ease;
+    }
+    body.js-fancy .timeline-section .timeline li:nth-child(even){transform:translateX(22px);}
+    .timeline li.sr-visible{opacity:1 !important;transform:translateX(0) !important;}
+
+    /* Skill hover nudge */
+    .skills li{transition:transform .2s ease;}
+    .skills li:hover{transform:translateX(6px);}
+
+    /* Cursor Trail Dots */
+    .cursor-dot{
+        position:fixed;border-radius:50%;background:#fdc750;
+        pointer-events:none;z-index:99997;
+        transform:translate(-50%,-50%);will-change:left,top;
+    }
+
+    /* Dark Mode Overrides */
+    body.dark-mode{background-color:#0d0d1a !important;}
+    body.dark-mode #content{background-color:#131323 !important;box-shadow:0 1px 6px rgba(0,0,0,.8);}
+    body.dark-mode #resume{background-color:#131323;}
+    body.dark-mode .menu{background-color:#1a1a2e !important;}
+    body.dark-mode .tabs li > a{color:#454565 !important;}
+    body.dark-mode h3.main-heading{color:#ddd8f0 !important;border-bottom-color:#2a2a44 !important;}
+    body.dark-mode h3.main-heading::after{background:#fdc750;}
+    body.dark-mode .timelineUnit{color:#c8c8e0 !important;}
+    body.dark-mode .timelineUnit h4{color:#e0e0f8 !important;}
+    body.dark-mode .timelineUnit h5{color:#6868a0 !important;}
+    body.dark-mode .timelineUnit p,body.dark-mode .timelineUnit ul li{color:#8888b0 !important;}
+    body.dark-mode .skills li h4{color:#c0c0e0 !important;}
+    body.dark-mode .extra-text{color:#555572 !important;border-bottom-color:#2a2a40 !important;}
+    body.dark-mode #blurb{background:#1c1c30 !important;color:#c8c8e0 !important;}
+    body.dark-mode #blurb h3{color:#ddd8f0 !important;border-bottom-color:#2a2a44 !important;}
+    body.dark-mode .cats-filter li a{background-color:#252540 !important;color:#888 !important;}
+    body.dark-mode .cats-filter li a:hover,
+    body.dark-mode .cats-filter li a.current{background-color:#fdc750 !important;color:#111 !important;}
+    body.dark-mode #portfolio-list li{background-color:#1c1c2e !important;border-bottom-color:#2a2a44 !important;}
+    body.dark-mode #portfolio-list li .title{color:#c8c8e0 !important;}
+    body.dark-mode #portfolio-list li .categorie{color:#5a5a88 !important;}
+    body.dark-mode footer .copyright{color:#3a3a55 !important;}
+    body.dark-mode strong{color:#e0e0f0 !important;}
+    body.dark-mode .muted{color:#555572 !important;}
+    body.dark-mode #dark-toggle{background:#fdc750 !important;color:#111 !important;border-color:#fdc750;}
+    body.dark-mode .about h4{color:#c9a02a !important;}
+
+    /* Konami Modal */
+    #konami-modal{
+        display:none;position:fixed;inset:0;
+        background:rgba(0,0,0,.92);z-index:999999;
+        align-items:center;justify-content:center;flex-direction:column;
+    }
+    #konami-modal.active{display:flex;}
+    #konami-box{
+        background:#0d0d1a;border:3px solid #fdc750;border-radius:16px;
+        padding:40px 52px;text-align:center;max-width:460px;width:90%;
+        animation:konami-pop .45s cubic-bezier(.34,1.56,.64,1);
+    }
+    @keyframes konami-pop{
+        from{transform:scale(.4) rotate(-8deg);opacity:0;}
+        to  {transform:scale(1)  rotate(0deg); opacity:1;}
+    }
+    #konami-box h2{color:#fdc750;font-size:26px;margin-bottom:10px;font-weight:900;}
+    #konami-box .konami-cat{font-size:52px;display:block;margin:10px 0 14px;}
+    #konami-box p{color:#c0c0e0;font-size:14px;line-height:1.75;margin-bottom:8px;}
+    #konami-box em{color:#fdc750;font-style:italic;}
+    #konami-box .k-code{color:#555;font-size:12px;margin:12px 0;letter-spacing:3px;}
+    #konami-close{
+        background:#fdc750;color:#111;border:none;border-radius:8px;
+        padding:10px 26px;font-size:13px;font-weight:700;
+        font-family:'Open Sans',Arial;cursor:pointer;margin-top:14px;
+    }
+    #konami-close:hover{background:#fff;}
+    </style>
 </head>
 <body>
+    <!-- Fancy Upgrade UI Elements -->
+    <div id="scroll-progress"></div>
+    <button id="dark-toggle">&#127769; Dark</button>
+    <button id="back-to-top" title="Back to top">&#8679;</button>
+    <div id="konami-modal">
+        <div id="konami-box">
+            <h2>&#127918; CHEAT CODE ACTIVATED</h2>
+            <span class="konami-cat">&#128049;</span>
+            <p>You actually know the Konami code. Respect.<br>
+            Unfortunately all you get is this cat and my admiration.</p>
+            <p><em>"The real infinite lives were the commits we pushed along the way."</em></p>
+            <p class="k-code">&#8679; &#8679; &#8681; &#8681; &#8678; &#8680; &#8678; &#8680; B A</p>
+            <button id="konami-close">Got it, thanks cat</button>
+        </div>
+    </div>
+
     <canvas id="bg-pixel-rain"></canvas>
     <section id="container">
         <header>
@@ -1062,6 +1234,132 @@
             resize();
             requestAnimationFrame(step);
         });
+    </script>
+    <!-- FANCY UPGRADES v2 — JavaScript -->
+    <script>
+    (function(){
+        'use strict';
+        document.body.classList.add('js-fancy');
+
+        // Scroll Progress Bar
+        var pb=document.getElementById('scroll-progress');
+        window.addEventListener('scroll',function(){
+            var t=document.documentElement.scrollHeight-window.innerHeight;
+            pb.style.width=(t>0?window.scrollY/t*100:0)+'%';
+        },{passive:true});
+
+        // Back to Top
+        var btt=document.getElementById('back-to-top');
+        window.addEventListener('scroll',function(){btt.classList.toggle('show',window.scrollY>300);},{passive:true});
+        btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+        // Dark Mode
+        var darkBtn=document.getElementById('dark-toggle');
+        function applyDark(on){
+            document.body.classList.toggle('dark-mode',on);
+            darkBtn.textContent=on?'\u2600\uFE0F Light':'\uD83C\uDF19 Dark';
+        }
+        try{applyDark(localStorage.getItem('rikk-dark')!=='0');}catch(e){applyDark(true);}
+        darkBtn.addEventListener('click',function(){
+            var nowDark=!document.body.classList.contains('dark-mode');
+            applyDark(nowDark);
+            try{localStorage.setItem('rikk-dark',nowDark?'1':'0');}catch(e){}
+        });
+
+        // Typewriter Cycling Subtitle
+        var subtitles=[
+            'Builder, learner, grinder, occasional player.',
+            'CS grad. Delivers code on time. And packages.',
+            'Full-stack dev. Part-time cat wrangler.',
+            "Ship fast. Fix faster. Don't push to prod on Friday.",
+            'Autonomous agents, esports data, too many side projects.',
+        ];
+        var subEl=document.querySelector('.about h3');
+        if(subEl){
+            var subIdx=0;
+            function typeOut(text){
+                subEl.textContent='';var i=0;
+                var t=setInterval(function(){
+                    subEl.textContent+=text[i++];
+                    if(i>=text.length){clearInterval(t);setTimeout(deleteOut,2800);}
+                },40);
+            }
+            function deleteOut(){
+                var t=setInterval(function(){
+                    var s=subEl.textContent;
+                    if(!s.length){clearInterval(t);subIdx=(subIdx+1)%subtitles.length;setTimeout(function(){typeOut(subtitles[subIdx]);},160);return;}
+                    subEl.textContent=s.slice(0,-1);
+                },16);
+            }
+            setTimeout(function(){typeOut(subtitles[0]);},900);
+        }
+
+        // Glitch Name
+        var nameEl=document.querySelector('.about h1');
+        if(nameEl){nameEl.classList.add('glitch-name');nameEl.setAttribute('data-text',nameEl.textContent.trim());}
+
+        // Scroll-Reveal for Timeline Items
+        if('IntersectionObserver' in window){
+            var srObs=new IntersectionObserver(function(entries){
+                entries.forEach(function(e){
+                    if(e.isIntersecting){e.target.classList.add('sr-visible');srObs.unobserve(e.target);}
+                });
+            },{threshold:0.12,rootMargin:'0px 0px -20px 0px'});
+            document.querySelectorAll('.timeline li').forEach(function(li){srObs.observe(li);});
+        } else {
+            document.querySelectorAll('.timeline li').forEach(function(li){li.classList.add('sr-visible');});
+        }
+
+        // Portfolio 3-D Tilt — removed per user request
+
+        // Cursor Trail
+        var DOT_COUNT=10,trailDots=[];
+        for(var di=0;di<DOT_COUNT;di++){
+            var dot=document.createElement('div');
+            dot.className='cursor-dot';
+            var sz=(9-di*.7);
+            dot.style.cssText='width:'+sz+'px;height:'+sz+'px;opacity:'+(1-di/DOT_COUNT*.75)+';';
+            document.body.appendChild(dot);
+            trailDots.push({el:dot,x:-200,y:-200});
+        }
+        var mx=-200,my=-200;
+        document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;},{passive:true});
+        (function trailLoop(){
+            var lx=mx,ly=my;
+            trailDots.forEach(function(d,i){
+                d.x+=(lx-d.x)*(0.38-i*0.028);d.y+=(ly-d.y)*(0.38-i*0.028);
+                d.el.style.left=d.x+'px';d.el.style.top=d.y+'px';
+                lx=d.x;ly=d.y;
+            });
+            requestAnimationFrame(trailLoop);
+        })();
+
+        // Konami Code
+        var KONAMI=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+        var kPos=0;
+        document.addEventListener('keydown',function(e){
+            if(e.key===KONAMI[kPos]){kPos++;if(kPos===KONAMI.length){kPos=0;activateKonami();}}else{kPos=0;}
+        });
+        function rainCats(){
+            var EMOJIS=['🐱','😸','😻','🐈','🐈‍⬛','🐾','🎮','⭐'];
+            for(var ri=0;ri<28;ri++){
+                (function(delay){setTimeout(function(){
+                    var c=document.createElement('div');
+                    c.textContent=EMOJIS[Math.floor(Math.random()*EMOJIS.length)];
+                    c.style.cssText='position:fixed;font-size:'+(20+Math.random()*32)+'px;left:'+Math.random()*97+'vw;top:-60px;z-index:9999998;pointer-events:none;transition:top 2.2s cubic-bezier(.4,0,1,1),opacity .6s 1.6s';
+                    document.body.appendChild(c);
+                    setTimeout(function(){c.style.top=(60+Math.random()*35)+'vh';c.style.opacity='0';},40);
+                    setTimeout(function(){c.remove();},2800);
+                },delay);})(ri*80);
+            }
+        }
+        function activateKonami(){
+            rainCats();
+            setTimeout(function(){document.getElementById('konami-modal').classList.add('active');},380);
+        }
+        document.getElementById('konami-close').addEventListener('click',function(){document.getElementById('konami-modal').classList.remove('active');});
+        document.getElementById('konami-modal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('active');});
+    })();
     </script>
 </body>
 </html>
